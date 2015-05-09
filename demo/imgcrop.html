@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jquery.imgcrop.js</title>
+		<link rel="stylesheet" type="text/css" href="jquery.imgcrop.css">
+		<script src="jquery-1.11.2.js"></script> 
+		<script src="../jquery.imgcrop.dev.js"></script>
+		<style type="text/css">
+			html, body, p{margin: 0; padding: 0; background: #f4f4f4; font-size: 14px; font-family: Consolas;}
+			.demo{padding: 50px;}
+			.demo-1, .demo-2, .demo-3{float: left;  margin-right: 40px; width: 400px; margin-bottom: 50px; padding: 15px; background: #fff; border: 1px solid #ccc; box-shadow: 0px 0px 15px rgba(0,0,0,.2);}
+			.ic img{width: 100%; vertical-align: top;}
+			.view{margin-top: 10px; display: inline-block; width: 100px; height: 100px; overflow: hidden;}
+			.view2{margin-top: 10px; display: inline-block;width: 50px; height: 50px; overflow: hidden;}
+
+
+			pre{margin: 0; padding-left: 10px; background: #242424; color: #fff;}
+			code{font-family: Consolas;}
+			.ic-global{color: #16d490;}
+			.ic-variable{color: #e928db;}
+			.ic-keyword{color: #ff007f;}
+			.ic-string{color: #ece47e;}
+			.ic-property{color: #52e3f6;}
+			.ic-atom, .ic-number{color: #c48cff;}
+			
+			.subBtn{display: block; margin: 10px 0px 10px 0px; width: 80px; height: 30px; line-height: 30px; text-align: center; font-size: 14px; background: #64a1eb; border: none; color: #fff; border-radius: 3px; cursor: pointer; transition: all .2s; text-decoration: none;}
+			.subBtn:hover{background: #5390da;}
+			.subBtn:active{box-shadow: 0px 3px 5px rgba(0,0,0,.2) inset; line-height: 32px;}
+			
+			.test{clear: both; line-height: 30px; background: #fff; margin-bottom: 10px;}
+		</style>
+		
+	</head>
+	<body>
+		
+		<script>
+			$(function(){
+//				$(".demo-1 .ic img").imgcrop();
+				
+				$(".demo-2 .ic img").imgcrop({
+					init: true,
+					views: [
+						{
+							view: ".demo-2 .view img", 
+							view_WH: 100
+						}
+					],
+					onSelectChange: function () {
+						console.log("onSelectChange...");
+						console.log("x1:" + $(".demo-2 .ic img").data("imgcrop_x1"));
+						console.log("y1:" + $(".demo-2 .ic img").data("imgcrop_y1"));
+						console.log("x2:" + $(".demo-2 .ic img").data("imgcrop_x2"));
+						console.log("y2:" + $(".demo-2 .ic img").data("imgcrop_y2"));
+						console.log("WH:" + $(".demo-2 .ic img").data("imgcrop_WH"));
+					},
+					onSelectEnd: function () {
+						console.log("onSelectEnd...");
+					}
+				});
+//				
+//				$(".demo-3 .ic img").imgcrop({
+//					views: [
+//						{
+//							view: ".demo-3 .view img", 
+//							view_WH: 100
+//						},
+//						{
+//							view: ".demo-3 .view2 img",
+//							view_WH: 50
+//						}
+//					]
+//				});
+//				
+//				$(".subBtn").click(function () {
+//					var $the = $(".demo-2 .ic img");
+//					console.log("上传中...");
+//					$.post("imgcrop.php", {
+//						x1: $the.data("imgcrop_x1"),
+//						y1: $the.data("imgcrop_y1"),
+//						WH: $the.data("imgcrop_WH"),
+//						imgSrc: $the.attr("src")
+//					}, function (data) {
+//						console.log(data);
+//					});
+//				});
+				
+			});
+		</script>
+		<div class="demo">
+<!--
+			<div class="demo-1">
+				<pre><code>
+<span class="ic-global">$</span>(<span class="ic-keyword">function</span>(){
+    <span class="ic-global">$</span>(<span class="ic-string">".demo-1 img"</span>).<span class="ic-property">imgcrop</span>();
+});
+		</code></pre>
+				<p class="ic"><img src="6630908336512723625.jpg"></p>
+				<p class="ic"><img src="6630908336512723625.jpg"></p>
+			</div>
+-->
+			
+			<div class="demo-2">
+				<pre><code>
+<span class="ic-global">$</span>(<span class="ic-keyword">function</span>(){
+    <span class="ic-global">$</span>(<span class="ic-string">".demo-2 img"</span>).<span class="ic-property">imgcrop</span>({
+        <span class="ic-property">init</span>: <span class="ic-atom">true</span>,
+        <span class="ic-property">views</span>: [
+	    {
+	        <span class="ic-property">view</span>: <span class="ic-string">".demo-2 .view img"</span>,
+	        <span class="ic-property">view_WH</span>: <span class="ic-number">100</span>
+	    }
+        ]
+    });
+});
+	</code></pre>
+				<p class="ic"><img src="6630908336512723625.jpg"></p>
+				<div class="view"><img src="6630908336512723625.jpg"></div>
+				<div><a href="javascript:;" class="subBtn">submit</a></div>
+			</div>
+			
+<!--
+			<div class="demo-3">
+				<pre><code>
+<span class="ic-global">$</span>(<span class="ic-keyword">function</span>(){
+    <span class="ic-global">$</span>(<span class="ic-string">".demo-3 p img"</span>).<span class="ic-property">imgcrop</span>({
+        <span class="ic-property">views</span>: [
+            {
+                <span class="ic-property">view</span>: <span class="ic-string">".demo-3 .view img"</span>,
+                <span class="ic-property">view_WH</span>: <span class="ic-number">100</span>
+            },
+            {
+                <span class="ic-property">view</span>: <span class="ic-string">".demo-3 .view2 img"</span>,
+                <span class="ic-property">view_WH</span>: <span class="ic-number">50</span>
+            }
+        ]
+    });
+});
+		</code></pre>
+				<p class="ic"><img src="6630908336512723625.jpg"></p>
+				<div class="view"><img src="6630908336512723625.jpg"></div>
+				<div class="view2"><img src="6630908336512723625.jpg"></div>
+			</div>
+-->
+		</div>
+		
+	</body>
+</html>

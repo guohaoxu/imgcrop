@@ -1,4 +1,5 @@
 <?php
+
 if($_POST){
 	$x1 = $_POST[x1];
 	$y1 = $_POST[y1];
